@@ -36,10 +36,10 @@
 	</c:if>
     <form:form modelAttribute="user" action="loginAction.htm" method="post">
       <div class="form-group has-feedback">
-        <form:input path="username" type="text" class="form-control" placeholder="Username" value="student1304" />
+        <form:input path="username" type="text" class="form-control" placeholder="Username" value="" />
       </div>
       <div class="form-group has-feedback">
-        <form:input path="password" type="password" class="form-control" placeholder="Password" value="23/08/1990" />
+        <form:input path="password" type="password" class="form-control" placeholder="Password" value="" />
       </div>
       <div class="row">
         <div class="col-xs-8">
