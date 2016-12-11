@@ -1,6 +1,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@include file="templates/header.jsp"%>
+<script>
+	$(".sidebar-menu li").removeClass("active");
+	$("#menu_addBook").addClass("active");
+</script>
 <div class="content-wrapper">
 	<c:if test="${book_saved != null}">
 		<div id="success-alert" class="alert alert-success alert-dismissible">

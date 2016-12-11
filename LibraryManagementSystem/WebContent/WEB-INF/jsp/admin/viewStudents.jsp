@@ -1,6 +1,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="templates/header.jsp"%>
+<script>
+	$(".sidebar-menu li").removeClass("active");
+	$("#menu_viewStudent").addClass("active");
+</script>
 <div class="content-wrapper">
 	<c:if test="${student_deleted != null}">
 		<div id="danger-alert" class="alert alert-danger alert-dismissible">

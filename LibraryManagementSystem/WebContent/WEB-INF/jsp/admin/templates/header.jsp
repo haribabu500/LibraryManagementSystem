@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${username == null}">
 	<script>
-		location.href='../login.htm'
+		location.href='/LibraryManagementSystem/login.htm'
 	</script>
 		
 </c:if>
@@ -88,11 +88,11 @@
               </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
-               <!--  <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div> -->
-                <div class="text-center">
-                  <a href="../logout.htm" class="btn btn-danger btn-flat">Log out</a>
+               <div class="pull-left">
+                  <a href="/LibraryManagementSystem/changePassword.htm?type=admin" class="btn btn-success btn-flat">Change Passsword</a>
+                </div>
+                <div class="pull-right">
+                  <a href="/LibraryManagementSystem/logout.htm" class="btn btn-danger btn-flat">Log out</a>
                 </div>
               </li>
             </ul>
@@ -134,15 +134,15 @@
         <li class="header">MAIN NAVIGATION</li>
         
         
-        <li class="active"><a href="adminHome.htm"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-        <li><a href="addBook.htm"><i class="fa fa-book"></i> <span>Add Book</span></a></li>
-        <li><a href="addStudent.htm"><i class="fa fa-user-plus"></i> <span>Add Student</span></a></li>
-        <li><a href="viewBooks.htm"><i class="fa fa-list"></i> <span>View Books</span></a></li>
-        <li><a href="viewStudents.htm"><i class="fa fa-users"></i> <span>View Students</span></a></li>
-        <li><a href="viewLends.htm"><i class="fa fa-reply"></i> <span>Lends</span></a></li>
+        <li class="active"><a href="/LibraryManagementSystem/admin/adminHome.htm"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+        <li id="menu_addBook"><a href="/LibraryManagementSystem/admin/addBook.htm"><i class="fa fa-book"></i> <span>Add Book</span></a></li>
+        <li id="menu_addStudent"><a href="/LibraryManagementSystem/admin/addStudent.htm"><i class="fa fa-user-plus"></i> <span>Add Student</span></a></li>
+        <li id="menu_viewBook"><a href="/LibraryManagementSystem/admin/viewBooks.htm"><i class="fa fa-list"></i> <span>View Books</span></a></li>
+        <li id="menu_viewStudent"><a href="/LibraryManagementSystem/admin/viewStudents.htm"><i class="fa fa-users"></i> <span>View Students</span></a></li>
+        <li id="menu_viewLend"><a href="/LibraryManagementSystem/admin/viewLends.htm"><i class="fa fa-reply"></i> <span>Lends</span></a></li>
         
         <hr>
-        <li><a href="../logout.htm"><i class="fa fa-lock"></i> <span>Log out</span></a></li>
+        <li><a href="/LibraryManagementSystem/logout.htm"><i class="fa fa-lock"></i> <span>Log out</span></a></li>
         
         <!-- <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>

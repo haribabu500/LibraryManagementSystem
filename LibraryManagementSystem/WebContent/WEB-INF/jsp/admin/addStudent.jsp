@@ -2,6 +2,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@include file="templates/header.jsp"%>
+<script>
+	$(".sidebar-menu li").removeClass("active");
+	$("#menu_addStudent").addClass("active");
+</script>
 <div class="content-wrapper">
 	<c:if test="${student_saved != null}">
 		<div id="success-alert" class="alert alert-success alert-dismissible">
@@ -64,7 +68,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Contact</label>
 					<div class="col-sm-10">
-						<form:input path="telephone" class="form-control" placeholder="Level"/>
+						<form:input path="telephone" class="form-control" placeholder="Contact"/>
 					</div>
 				</div>
 				

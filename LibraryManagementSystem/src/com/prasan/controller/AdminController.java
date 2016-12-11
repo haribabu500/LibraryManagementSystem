@@ -25,7 +25,7 @@ import com.prasan.model.User;
 public class AdminController {
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
-		SimpleDateFormat dateFormat=new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 	
@@ -52,7 +52,7 @@ public class AdminController {
 		mav.addObject("books", books);
 		
 		hql="select s from Student s order by s.id desc";
-		List students=LibraryManagementServiceManager.select(hql, Student.class);
+		List students=LibraryManagementServiceManager.selectLimit(hql, Student.class,4);
 		mav.addObject("students", students);
 		
 		
@@ -144,7 +144,7 @@ public class AdminController {
 			user_student.setFirstname(student.getFname());
 			user_student.setLastname(student.getLname());
 			user_student.setUsername("student"+student.getId());
-			user_student.setPassword(new SimpleDateFormat("dd/mm/yyyy").format(student.getDob()));
+			user_student.setPassword(new SimpleDateFormat("dd/MM/yyyy").format(student.getDob()));
 			user_student.setRole("student");
 			LibraryManagementServiceManager.save(user_student);
 		}
