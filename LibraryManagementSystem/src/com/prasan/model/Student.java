@@ -13,12 +13,12 @@ public class Student extends LibraryManagementObject{
 	private String level;
 	private String address;
 	private int age;
-	private int telephone;
+	private String telephone;
 	
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 	@Temporal(value=TemporalType.TIMESTAMP)

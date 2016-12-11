@@ -19,6 +19,7 @@ import com.prasan.data.LibraryManagementServiceManager;
 import com.prasan.model.Book;
 import com.prasan.model.Lend;
 import com.prasan.model.Student;
+import com.prasan.model.User;
 
 @Controller
 public class AdminController {
@@ -31,6 +32,31 @@ public class AdminController {
 	@RequestMapping("admin/adminHome")
 	public ModelAndView adminHomeContent(){
 		ModelAndView mav=new ModelAndView("admin/adminHome");
+		String hql="select sum(b.quantity) as total from Book b";
+		List list=LibraryManagementServiceManager.select(hql, Book.class);
+		long totalBooks=(long) list.get(0);
+		mav.addObject("totalBooks", totalBooks);
+		
+		hql="select count(s.id) as total from Student s";
+		list=LibraryManagementServiceManager.select(hql, Student.class);
+		long totalStudents=(long) list.get(0);
+		mav.addObject("totalStudents", totalStudents);
+		
+		hql="select count(l.id) as total from Lend l where l.status='lend'";
+		list=LibraryManagementServiceManager.selectLimit(hql, Lend.class,4);
+		long totalLends=(long) list.get(0);
+		mav.addObject("totalLends", totalLends);
+		
+		hql="select b from Book b order by b.id desc";
+		List books=LibraryManagementServiceManager.selectLimit(hql, Book.class,4);
+		mav.addObject("books", books);
+		
+		hql="select s from Student s order by s.id desc";
+		List students=LibraryManagementServiceManager.select(hql, Student.class);
+		mav.addObject("students", students);
+		
+		
+		
 		return mav;
 	}
 	
@@ -114,6 +140,13 @@ public class AdminController {
 	public ModelAndView addStudent(@ModelAttribute("student") Student student){
 		if(student.getId()==0){
 			LibraryManagementServiceManager.save(student);
+			User user_student=new User();
+			user_student.setFirstname(student.getFname());
+			user_student.setLastname(student.getLname());
+			user_student.setUsername("student"+student.getId());
+			user_student.setPassword(new SimpleDateFormat("dd/mm/yyyy").format(student.getDob()));
+			user_student.setRole("student");
+			LibraryManagementServiceManager.save(user_student);
 		}
 		else {
 			LibraryManagementServiceManager.update(student);
@@ -134,6 +167,12 @@ public class AdminController {
 	
 	@RequestMapping("admin/deleteStudent")
 	public ModelAndView deleteStudent(@RequestParam(value="id",required=false) String id){
+		List lends=LibraryManagementServiceManager.select("select l from Lend l where l.student.id="+id, Lend.class);
+		for (Object object : lends) {
+			Lend lend=(Lend) object;
+			LibraryManagementServiceManager.remove(lend.getId(), Lend.class);
+			
+		}
 		LibraryManagementServiceManager.remove(Integer.parseInt(id), Student.class);
 		System.out.println("Remove entered");
 		ModelAndView mav=new ModelAndView("admin/viewStudents");
@@ -180,7 +219,7 @@ public class AdminController {
 	@RequestMapping("admin/viewLends")
 	public ModelAndView viewLends(){
 		ModelAndView mav=new ModelAndView("admin/viewLends");
-		List lends=LibraryManagementServiceManager.select("select l from Lend l", Lend.class);
+		List lends=LibraryManagementServiceManager.select("select l from Lend l where l.status='lend'", Lend.class);
 		for (Object object : lends) {
 			Lend lend=(Lend) object;
 //			Date date=lend.getLendDate();
@@ -200,4 +239,24 @@ public class AdminController {
 		return mav;
 	}
 	
+	@RequestMapping("admin/returnBook")
+	public ModelAndView returnBook(@RequestParam("id")String id){
+//		ModelAndView mav=new ModelAndView("admin/returnBook");
+		Lend lend=(Lend) LibraryManagementServiceManager.find(Integer.parseInt(id), Lend.class);
+		lend.setStatus("returned");
+		LibraryManagementServiceManager.update(lend);
+		Book book=(Book) LibraryManagementServiceManager.find(lend.getBook().getId(), Book.class);
+		book.setQuantity(book.getQuantity()+1);
+		LibraryManagementServiceManager.update(book);
+		
+		return null;
+	}
+	
+	@RequestMapping("admin/lostBook")
+	public ModelAndView lostBook(@RequestParam("id")String id){
+		Lend lend=(Lend) LibraryManagementServiceManager.find(Integer.parseInt(id), Lend.class);
+		lend.setStatus("lost");
+		LibraryManagementServiceManager.update(lend);
+		return null;
+	}
 }

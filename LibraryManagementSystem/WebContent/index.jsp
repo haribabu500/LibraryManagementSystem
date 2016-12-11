@@ -1,4 +1,3 @@
-<!-- <script>
-	location.href='home.htm'
-</script> -->
-This is default page...
+<script>
+	location.href='login.htm'
+</script>

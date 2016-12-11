@@ -33,8 +33,8 @@
 								<td>${dateString2}</td>
 								<td>${lend.fine}</td>
 								<td>
-									<button class="btn btn-primary">Return</button>
-									<button class="btn btn-danger">Lost</button>
+									<button id=return_book onclick="returnBook(${lend.id})" class="btn btn-primary">Return</button>
+									<button onclick="lostBook(${lend.id})" class="btn btn-danger">Lost</button>
 								</td>
 							</tr>
 						</c:forEach>
@@ -55,8 +55,30 @@
 				"autoWidth" : false
 			});
 		});
-		function lendBook(id){
-			location.href="lendBook.htm?id="+id;
+		
+		function returnBook(id){
+			$.ajax({
+				url:"returnBook.htm?id="+id,
+				success:function(data){
+					alert("Successfully returned book.");
+					location.href="viewLends.htm";
+				},
+				error:function(data){
+					alert("Oops! something went wrong");
+				}
+			});
+		}
+		function lostBook(id){
+			$.ajax({
+				url:"lostBook.htm?id="+id,
+				success:function(data){
+					alert("Successfully registered as lost book.");
+					location.href="viewLends.htm";
+				},
+				error:function(data){
+					alert("Oops! something went wrong");
+				}
+			});
 		}
 	</script>
 </div>

@@ -40,7 +40,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Date Of Birth</label>
 					<div class="col-sm-10">
-						<form:input id="datepicker" path="dob" class="form-control" placeholder="Level"/>
+						<form:input id="datepicker" path="dob" class="form-control" placeholder="Date Of Birth"/>
 					</div>
 				</div>
 				<script type="text/javascript">

@@ -34,6 +34,9 @@ public class LibraryManagementServiceManager {
 	public static List<Object> select(String query, Class clasz) {
 		return entityManager.createQuery(query, clasz).getResultList();
 	}
+	public static List<Object> selectLimit(String query, Class clasz,int limit) {
+		return entityManager.createQuery(query, clasz).setMaxResults(limit).getResultList();
+	}
 	public static Object find(int id,Class class1){
 		return entityManager.find(class1, id);
 	}
