@@ -229,10 +229,14 @@ public class AdminController {
 			lend.setReturnDate(calendar.getTime());
 			Calendar now=Calendar.getInstance();
 			now.setTime(new Date());
+//			System.out.println(calendar.getTime());
+//			System.out.println(now.getTime());
 			
-			int diff=Math.abs((int)(now.getTime().getTime() - calendar.getTime().getTime())/(1000*60*60*25));
-			if(diff>lend.getDays()){
-				lend.setFine((diff-lend.getDays())*5);// 5 rupee fine per day
+			int diff=(int) ((now.getTime().getTime() - calendar.getTime().getTime())/(1000*60*60*25));
+//			System.out.println("==>>"+diff);
+//			System.out.println("--->>"+lend.getDays());
+			if(diff>0){
+				lend.setFine(diff*5);// 5 rupee fine per day
 			}
 		}
 		mav.addObject("lends",lends);
