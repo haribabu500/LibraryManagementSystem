@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Book extends LibraryManagementObject {
 	private String name;
 	private String author;
-	private int isbn;
+	private String isbn;
 	private String publication;
 	private String genere;
 	public int getQuantity() {
@@ -34,10 +34,10 @@ public class Book extends LibraryManagementObject {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	public String getPublication() {

@@ -28,7 +28,17 @@ public class AdminController {
 		SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
-	
+	@RequestMapping("setup")
+	public ModelAndView setup(){
+		User user=new User();
+		user.setFirstname("Library");
+		user.setLastname("Administrator");
+		user.setRole("admin");
+		user.setUsername("admin");
+		user.setPassword("admin");
+		LibraryManagementServiceManager.save(user);
+		return null;
+	}
 	@RequestMapping("admin/adminHome")
 	public ModelAndView adminHomeContent(){
 		ModelAndView mav=new ModelAndView("admin/adminHome");

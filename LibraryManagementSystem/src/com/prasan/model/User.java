@@ -6,7 +6,7 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="user", uniqueConstraints=@UniqueConstraint(columnNames={"username"}))
+@Table(name="user_data", uniqueConstraints=@UniqueConstraint(columnNames={"username"}))
 public class User extends LibraryManagementObject {
 	private String username;
 	private String password;

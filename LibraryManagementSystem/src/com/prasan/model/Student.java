@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 public class Student extends LibraryManagementObject{
 	private String fname;
 	private String lname;
-	private String level;
+	private String studentLevel;
 	private String address;
 	private int age;
 	private String telephone;
@@ -41,11 +41,11 @@ public class Student extends LibraryManagementObject{
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-	public String getLevel() {
-		return level;
+	public String getStudentLevel() {
+		return studentLevel;
 	}
-	public void setLevel(String level) {
-		this.level = level;
+	public void setStudentLevel(String studentLevel) {
+		this.studentLevel = studentLevel;
 	}
 	public String getAddress() {
 		return address;

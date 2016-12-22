@@ -139,7 +139,7 @@
                     <a href="javascript:void(0)" class="product-title">${student.fname } ${student.lname }
                       <span class="label label-warning pull-right"></span></a>
                         <span class="product-description">
-                          ${student.level }
+                          ${student.studentLevel }
                         </span>
                   </div>
                 </li>

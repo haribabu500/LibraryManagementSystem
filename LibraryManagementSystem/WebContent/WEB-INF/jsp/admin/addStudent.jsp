@@ -62,7 +62,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Level</label>
 					<div class="col-sm-10">
-						<form:input path="level" class="form-control" placeholder="Level"/>
+						<form:input path="studentLevel" class="form-control" placeholder="Level"/>
 					</div>
 				</div>
 				<div class="form-group">

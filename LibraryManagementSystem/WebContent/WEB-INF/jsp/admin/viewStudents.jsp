@@ -47,7 +47,7 @@
 
 								<td>${dateString}</td>
 								<td>${student.address}</td>
-								<td>${student.level}</td>
+								<td>${student.studentLevel}</td>
 								<td>${student.telephone}</td>
 								<td><a href="addStudent.htm?id=${student.id}"><i class="fa fa-edit">|</i></a> <a href="deleteStudent.htm?id=${student.id}"><i class="fa fa-trash text-danger"></i></a></td>
 							</tr>
