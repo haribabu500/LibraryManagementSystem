@@ -136,7 +136,7 @@
         
         <li id="dashboard_menu" class="active"><a href="studentDashboard.htm"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
         <li id="pendingBooks_menu"><a href="studentLends.htm?id=${user.id}"><i class="fa fa-history"></i> <span>Pending Books</span></a></li>
-        <li id="lendedBooks_menu"><a href="studentAllLends.htm?id=${user.id}"><i class="fa fa-book"></i> <span>Books Lended</span></a></li>
+        <li id="lendedBooks_menu"><a href="studentAllLends.htm?id=${user.id}"><i class="fa fa-book"></i> <span>Books Borrowed</span></a></li>
         
         
         <hr>
